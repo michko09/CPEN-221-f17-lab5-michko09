@@ -2,10 +2,12 @@ package zeroSumSubsequence;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ZeroSumSubsequence {
 
-	private static ArrayList<Integer> lengthValues = new ArrayList<Integer>();
+	private static TreeSet<Integer> lengthValues = new TreeSet<Integer>();
 
 	/**
 	 * Finds the maximum length of sequences that sum to zero
@@ -23,16 +25,9 @@ public class ZeroSumSubsequence {
 		
 		// Check the base case that only zero integers sum to zero
 		for (Integer i : sequence) {
-			if (i > 0) {
-				positiveFlag = true;
-			}
-			if (i < 0) {
-				negativeFlag = true;
-			}
-			if (i == 0) {
-				zeroFlag = true;
-				zeroCount++;
-			}
+			if (i > 0) {positiveFlag = true;}
+			if (i < 0) {negativeFlag = true;}
+			if (i == 0) {zeroFlag = true; zeroCount++;}
 			sum += i;
 		}
 
@@ -60,28 +55,7 @@ public class ZeroSumSubsequence {
 			}
 		}
 		
-		// Use a helper method to find the maximum length of sequences
-		length = findHighestLength(lengthValues);
-		return length;
-	}
-
-	/**
-	 * Finds the maximum length of sequences in all possible valid combinations
-	 * 
-	 * @param lengthList - ArrayList of all the possible sequence lengths that
-	 * 		               sum up to zero
-	 * @return the maximum length in the ArrayList, or zero if it is empty
-	 */
-	public static int findHighestLength(ArrayList<Integer> lengthList) {
-		int length = 0;
-		if (lengthList.isEmpty() == false) {
-			for (Integer i : lengthList) {
-				if (i > length) {
-					length = i;
-				}
-			}
-		}
-
+		if (lengthValues.isEmpty() == false) {return lengthValues.last();}
 		return length;
 	}
 

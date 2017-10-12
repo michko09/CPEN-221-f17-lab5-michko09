@@ -12,7 +12,7 @@ public class ZeroSumSubsequenceTest {
 	public void test1() {
 		assertEquals(2, ZeroSumSubsequence.getMaximumLength(Arrays.asList(2, -2)));
 	}
-	
+
 	@Test
 	public void test2() {
 		assertEquals(3, ZeroSumSubsequence.getMaximumLength(Arrays.asList(3, 4, -2, -1)));
